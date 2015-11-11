@@ -48,6 +48,7 @@ group :development do
   gem 'starter_generators'
   gem 'populator'
   gem 'faker'
+  gem 'quiet_assets'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
