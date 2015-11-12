@@ -1,6 +1,9 @@
 <h1>Dog Information</h1>
 
 <p>
+  <%= image_tag @dog.avatar.url(:medium) %>
+</p>
+<p>
   <strong>Name:</strong>
   <%= @dog.name %> <%= @dog.owner.last_name %>
 </p>
