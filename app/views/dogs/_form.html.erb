@@ -16,7 +16,7 @@
   </div>
   <div class="field form-group">
     <%= f.label 'Date of Birth' %><br>
-    <%= f.date_select(:dob, :order => [:month, :day, :year]) %>
+    <%= f.date_select :dob, :order => [:month, :day, :year], :start_year => Date.today.year - 20 %>
   </div>
   <div class="field form-group">
     <%= f.label 'Breed' %><br>
@@ -33,6 +33,11 @@
   <div class="field form-group">
     <%= f.label :vet_id %><br>
     <%= f.collection_select :vet_id, Vet.order('doctor'), :id, :doctor, {prompt: "Choose a Vet"}, {class: "form-control"}  %>
+  </div>
+  <div>
+    <%= f.label :avatar %><br>
+    <%= f.file_field :avatar %>
+
   </div>
   <div class="actions">
     <%= f.submit "Save Dog", class: "btn btn-success btn-sm" %>
