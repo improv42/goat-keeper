@@ -11,37 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :first_name %><br>
     <%= f.text_field :first_name %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :last_name %><br>
     <%= f.text_field :last_name %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :phone %><br>
     <%= f.text_field :phone %>
   </div>
-  <div class="field">
-    <%= f.label :alt_phone %><br>
+  <div class="field form-group">
+    <%= f.label "Alternate Phone" %><br>
     <%= f.text_field :alt_phone %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :email %><br>
     <%= f.text_field :email %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :emergency_contact_name %><br>
     <%= f.text_field :emergency_contact_name %>
   </div>
-  <div class="field">
+  <div class="field  form-group">
     <%= f.label :emergency_contact_phone %><br>
     <%= f.text_field :emergency_contact_phone %>
   </div>
-  <div class="field">
-    <%= f.label :evac_waiver %><br>
+  <div class="field checkbox-inline form-group">
     <%= f.check_box :evac_waiver %>
+    <%= f.label 'Evacuation waiver signed and accepted' %><br>
   </div>
   <div class="actions">
     <%= f.submit 'Save Owner', class: "btn btn-success btn-sm" %>

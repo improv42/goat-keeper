@@ -10,33 +10,33 @@
       </ul>
     </div>
   <% end %>
-<%= :select_name %>
-<%= :first_name %>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label 'Name' %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label 'Date of Birth' %><br>
     <%= f.date_select(:dob, :order => [:month, :day, :year]) %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label 'Breed' %><br>
-    <%= f.collection_select :breed_id, Breed.order('breed_name'), :id, :breed_name %>
+    <%= f.collection_select :breed_id, Breed.order('breed_name'), :id, :breed_name, {prompt: "Select a breed"}, {class: "form-control"} %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :owner_id %><br>
-    <%= f.collection_select :owner_id, Owner.order('last_name'), :id, :sort_name %>
+    <%= f.collection_select :owner_id, Owner.order('last_name'), :id, :sort_name, {prompt: "Choose an Owner"}, {class: "form-control"} %>
   </div>
-  <div class="field">
-    <%= f.label :med_cond %><br>
-    <%= f.text_field :med_cond %>
+  <div class="field form-group">
+    <%= f.label "Medical Conditions" %><br>
+    <%= f.text_field :med_cond, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :vet_id %><br>
-    <%= f.collection_select :vet_id, Vet.order('doctor'), :id, :doctor %>
+    <%= f.collection_select :vet_id, Vet.order('doctor'), :id, :doctor, {prompt: "Choose a Vet"}, {class: "form-control"}  %>
   </div>
   <div class="actions">
     <%= f.submit "Save Dog", class: "btn btn-success btn-sm" %>
   </div>
 <% end %>
+
+
