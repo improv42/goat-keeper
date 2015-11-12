@@ -30,6 +30,7 @@ gem 'annotate'
 gem 'stamp'
 gem 'font-awesome-rails'
 gem 'phony_rails'
+gem "paperclip", "~> 4.3"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
