@@ -1,55 +1,67 @@
-<h1>Owner Information</h1>
-<hr>
- <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-6">
-      <p>
-        <strong>Name:</strong>
-        <%= @owner.display_name %>
-      </p>
-
-      <p>
-        <strong>Phone:</strong>
-        <%= @owner.phone %>
-      </p>
-
-      <p>
-        <strong>Alt phone:</strong>
-        <%= @owner.alt_phone %>
-      </p>
-
-      <p>
-        <strong>Email:</strong>
-        <%= @owner.email %>
-      </p>
-    </div>
-    <div class="col-md-6">
-      <p>
-        <strong>Emergency contact name:</strong>
-        <%= @owner.emergency_contact_name %>
-      </p>
-
-      <p>
-        <strong>Emergency contact phone:</strong>
-        <%= @owner.emergency_contact_phone %>
-      </p>
-
-      <p>
-        <strong>Evac waiver:</strong>
-        <%= @owner.evac_waiver %>
-      </p>
-    </div>
-  </div>
-  <hr>
-  <div class="col-md-12">
-    <h3>Dogs</h3>
-    <ul>
-      <% @owner.dogs.each do |dog| %>
-        <li><%= link_to dog.name, dog_path(dog.id) %></li>
-      <% end %>
+<div class="row" id="wrapper">
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav text-center">
+      <%= link_to fa_icon('pencil lg', text: 'Edit Owner'), edit_owner_path(@owner), class: "btn btn-info btn-sm" %>
+      <%= link_to fa_icon('list lg', text: 'All Owners'), owners_path, class: "btn btn-info btn-sm" %>
     </ul>
   </div>
+
+  <div class="col-xs-12">
+    <h1><%= @owner.display_name %></h1>
+    <hr>
+     <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <p>
+            <strong>Phone:</strong>
+            <%= @owner.phone %>
+          </p>
+
+          <p>
+            <strong>Alt phone:</strong>
+            <%= @owner.alt_phone %>
+          </p>
+
+          <p>
+            <strong>Email:</strong>
+            <%= @owner.email %>
+          </p>
+        </div>
+        <div class="col-md-6">
+          <p>
+            <strong>Emergency contact name:</strong>
+            <%= @owner.emergency_contact_name %>
+          </p>
+
+          <p>
+            <strong>Emergency contact phone:</strong>
+            <%= @owner.emergency_contact_phone %>
+          </p>
+
+          <p>
+            <strong>Evac waiver:</strong>
+            <%= @owner.evac_waiver %>
+          </p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-12">
+          <h3>Dogs</h3>
+            <% @owner.dogs.each do |dog| %>
+            <div class="col-xs-6 col-sm-3">
+              <div class="panel <%= dog.in_daycare ? 'panel-success' : 'panel-default' %> ">
+                <div class="panel-heading">
+                  <h3 class="panel-title"><%= link_to dog.name, dog_path(dog.id) %></h3>
+                </div>
+                <div class="panel-body">
+                  <%= link_to image_tag(dog.avatar.url(:medium), class: 'img-responsive img-circle'), dog_path(dog.id) %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<hr>
-<%= link_to 'Edit', edit_owner_path(@owner), class: "btn btn-info btn-sm" %>
-<%= link_to 'Back', owners_path, class: "btn btn-info btn-sm" %>

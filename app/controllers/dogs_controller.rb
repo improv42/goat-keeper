@@ -62,6 +62,7 @@ class DogsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_dog
       @dog = Dog.find(params[:id])
@@ -75,6 +76,7 @@ class DogsController < ApplicationController
                                   :owner_id,
                                   :med_cond,
                                   :vet_id,
-                                  :avatar)
+                                  :avatar,
+                                  :in_daycare)
     end
 end

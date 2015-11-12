@@ -1,47 +1,60 @@
-<%= form_for(@dog) do |f| %>
-  <% if @dog.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@dog.errors.count, "error") %> prohibited this dog from being saved:</h2>
+<div class="row">
+  <%= form_for(@dog) do |f| %>
+    <% if @dog.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@dog.errors.count, "error") %> prohibited this dog from being saved:</h2>
 
-      <ul>
-      <% @dog.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @dog.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="col-sm-2">
+      <div class="field checkbox-inline form-group">
+        <%= f.check_box :in_daycare %>
+        <%= f.label 'In Daycare' %><br>
+      </div>
+      <div class="actions">
+        <button type="submit" class="btn btn-success btn-sm">
+          <%= fa_icon('thumb-tack', text: 'Save Dog') %>
+          <% f.submit %>
+        </button>
+      </div>
+    </div>
+    <div class="col-sm-8" id="info_col">
+      <div class="field form-group">
+        <%= f.label 'Name' %><br>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="field form-group">
+        <%= f.label 'Date of Birth' %><br>
+        <%= f.date_select :dob, :order => [:month, :day, :year], :start_year => Date.today.year - 20 %>
+      </div>
+      <div class="field form-group">
+        <%= f.label 'Breed' %><br>
+        <%= f.collection_select :breed_id, Breed.order('breed_name'), :id, :breed_name, {prompt: "Select a breed"}, {class: "form-control"} %>
+      </div>
+      <div class="field form-group">
+        <%= f.label :owner_id %><br>
+        <%= f.collection_select :owner_id, Owner.order('last_name'), :id, :sort_name, {prompt: "Choose an Owner"}, {class: "form-control"} %>
+      </div>
+      <div class="field form-group">
+        <%= f.label "Medical Conditions" %><br>
+        <%= f.text_field :med_cond, class: "form-control" %>
+      </div>
+      <div class="field form-group">
+        <%= f.label :vet_id %><br>
+        <%= f.collection_select :vet_id, Vet.order('doctor'), :id, :doctor, {prompt: "Choose a Vet"}, {class: "form-control"}  %>
+      </div>
+      <div>
+        <%= f.label 'Photo' %><br>
+        <%= f.file_field :avatar %>
+      </div>
     </div>
   <% end %>
-  <div class="field form-group">
-    <%= f.label 'Name' %><br>
-    <%= f.text_field :name, class: "form-control" %>
-  </div>
-  <div class="field form-group">
-    <%= f.label 'Date of Birth' %><br>
-    <%= f.date_select :dob, :order => [:month, :day, :year], :start_year => Date.today.year - 20 %>
-  </div>
-  <div class="field form-group">
-    <%= f.label 'Breed' %><br>
-    <%= f.collection_select :breed_id, Breed.order('breed_name'), :id, :breed_name, {prompt: "Select a breed"}, {class: "form-control"} %>
-  </div>
-  <div class="field form-group">
-    <%= f.label :owner_id %><br>
-    <%= f.collection_select :owner_id, Owner.order('last_name'), :id, :sort_name, {prompt: "Choose an Owner"}, {class: "form-control"} %>
-  </div>
-  <div class="field form-group">
-    <%= f.label "Medical Conditions" %><br>
-    <%= f.text_field :med_cond, class: "form-control" %>
-  </div>
-  <div class="field form-group">
-    <%= f.label :vet_id %><br>
-    <%= f.collection_select :vet_id, Vet.order('doctor'), :id, :doctor, {prompt: "Choose a Vet"}, {class: "form-control"}  %>
-  </div>
-  <div>
-    <%= f.label :avatar %><br>
-    <%= f.file_field :avatar %>
-
-  </div>
-  <div class="actions">
-    <%= f.submit "Save Dog", class: "btn btn-success btn-sm" %>
-  </div>
-<% end %>
+</div>
 
 

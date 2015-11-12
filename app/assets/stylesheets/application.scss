@@ -1,0 +1,163 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @import "font-awesome";
+
+.navbar {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.navbar-right {
+  margin-right: 0;
+}
+
+#brand :hover {
+  color: #339213;
+}
+
+#bs-example-navbar-collapse-1 :hover {
+  color: #339213;
+}
+
+.btn {
+  margin: 5px 5px 5px 0;
+}
+
+a {
+  color: #A2A2A2;
+}
+
+a :hover {
+  color: #339213;
+}
+
+td a:hover {
+  color: #339213;
+}
+
+.jumbotron {
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/50/Bodiam-castle-10My8-1197.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 15%;
+  margin-top: 15px;
+  margin-bottom: 0;
+  }
+
+  .jumbotron h1 {
+    font-variant: small-caps;
+  }
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 150px;
+}
+#sidebar-wrapper {
+  z-index: 1000;
+  position: fixed;
+  left: 100px;
+  width: 0;
+  height: 100%;
+  margin-left: -100px;
+  overflow-y: auto;
+  padding-top: 40px;
+  background-color: rgba(255, 255, 255, 0.8);
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 150px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 40px;
+    width: 150px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #FFF;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #339213;
+    background-color: rgba(16, 12, 10, 0.6);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+#info_col {
+  height: 400px;
+  padding: 20px;
+  padding-top: 0;
+  overflow: auto;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 150px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 150px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+
+

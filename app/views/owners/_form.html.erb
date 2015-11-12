@@ -1,49 +1,57 @@
-<%= form_for(@owner) do |f| %>
-  <% if @owner.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@owner.errors.count, "error") %> prohibited this owner from being saved:</h2>
+<div class="row">
+  <%= form_for(@owner) do |f| %>
+    <% if @owner.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@owner.errors.count, "error") %> prohibited this owner from being saved:</h2>
 
-      <ul>
-      <% @owner.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @owner.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="col-sm-2">
+      <div class="actions">
+        <button type="submit" class="btn btn-success btn-sm">
+          <%= fa_icon('thumb-tack', text: 'Save Owner') %>
+          <% f.submit %>
+        </button>
+      </div>
+    </div>
+    <div class="col-sm-5" id="info_col">
+      <div class="field form-group">
+        <%= f.label :first_name %><br>
+        <%= f.text_field :first_name, class: "form-control" %>
+      </div>
+      <div class="field form-group">
+        <%= f.label :last_name %><br>
+        <%= f.text_field :last_name, class: "form-control" %>
+      </div>
+      <div class="field form-group">
+        <%= f.label :phone %><br>
+        <%= f.text_field :phone, class: "form-control" %>
+      </div>
+      <div class="field form-group">
+        <%= f.label "Alternate Phone" %><br>
+        <%= f.text_field :alt_phone, class: "form-control" %>
+      </div>
+      <div class="field form-group">
+        <%= f.label :email %><br>
+        <%= f.text_field :email, class: "form-control" %>
+      </div>
+      <div class="field form-group">
+        <%= f.label :emergency_contact_name %><br>
+        <%= f.text_field :emergency_contact_name, class: "form-control" %>
+      </div>
+      <div class="field  form-group">
+        <%= f.label :emergency_contact_phone %><br>
+        <%= f.text_field :emergency_contact_phone, class: "form-control" %>
+      </div>
+      <div class="field checkbox-inline form-group">
+        <%= f.check_box :evac_waiver %>
+        <%= f.label 'Evacuation waiver signed and accepted' %><br>
+      </div>
     </div>
   <% end %>
-
-  <div class="field form-group">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field form-group">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field form-group">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
-  </div>
-  <div class="field form-group">
-    <%= f.label "Alternate Phone" %><br>
-    <%= f.text_field :alt_phone %>
-  </div>
-  <div class="field form-group">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field form-group">
-    <%= f.label :emergency_contact_name %><br>
-    <%= f.text_field :emergency_contact_name %>
-  </div>
-  <div class="field  form-group">
-    <%= f.label :emergency_contact_phone %><br>
-    <%= f.text_field :emergency_contact_phone %>
-  </div>
-  <div class="field checkbox-inline form-group">
-    <%= f.check_box :evac_waiver %>
-    <%= f.label 'Evacuation waiver signed and accepted' %><br>
-  </div>
-  <div class="actions">
-    <%= f.submit 'Save Owner', class: "btn btn-success btn-sm" %>
-  </div>
-<% end %>
+</div>

@@ -1,35 +1,31 @@
-<h1>Listing Dogs</h1>
+<h1>All Our Dogs
+<%= link_to 'New Dog', new_dog_path, class: "btn btn-info btn-sm" %></h1>
+<hr>
+<div class="row">
+  <% @dogs.order('name').each do |dog| %>
+    <div class="col-xs-6 col-md-4">
+      <div class="panel <%= dog.in_daycare ? 'panel-success' : 'panel-default' %> ">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= dog.name %> <%= dog.owner.last_name %> </h3>
+        </div>
+        <div class="panel-body">
+          <%= image_tag dog.avatar.url(:medium), class: 'img-responsive img-circle center-block' %>
+          <p class="text-center">
+            <%= link_to fa_icon('eye lg', text: 'Show Dog'), dog, class: "btn btn-info btn-sm" %>
+            <%= link_to fa_icon('pencil lg', text: 'Edit Dog'), edit_dog_path(dog), class: "btn btn-info btn-sm" %>
+            <%= form_for(dog) do |f| %>
+              <div>
+                <%= f.check_box :in_daycare, class: "field checkbox-inline form-group" %>
+                <button type="submit" data-toggle="btn" class="btn btn-sm <%= dog.in_daycare ? 'btn-success' : 'btn-info' %>">
+                  <%= 'In Daycare' %>
+                  <% f.submit %>
+                </button>
+              </div>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-<table class="table table-striped table-hover">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Date of Birth</th>
-      <th>Breed</th>
-      <th>Owner</th>
-      <th>Medical Conditions</th>
-      <th>Vet</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @dogs.order('name').each do |dog| %>
-      <tr>
-        <td><%= dog.name %></td>
-        <td><%= dog.dob.stamp('April 29, 1976') %></td>
-        <td><%= dog.breed.breed_name %></td>
-        <td><%= dog.owner.display_name %></td>
-        <td><%= dog.med_cond %></td>
-        <td><%= dog.vet.doctor %></td>
-        <td><%= link_to fa_icon('eye'), dog %></td>
-        <td><%= link_to fa_icon('pencil'), edit_dog_path(dog) %></td>
-        <td><%= link_to fa_icon('trash-o'), dog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Dog', new_dog_path, class: "btn btn-info btn-sm" %>

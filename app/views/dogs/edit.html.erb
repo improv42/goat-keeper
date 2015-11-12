@@ -1,6 +1,16 @@
-<h1>Editing Dog</h1>
+<div class="row" id="wrapper">
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav text-center">
+      <%= link_to fa_icon('list lg', text: 'All Dogs'), dogs_path, class: "btn btn-info btn-sm" %>
+      <%= link_to fa_icon('trash-o lg', text: 'Delete'), @dog, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-info btn-sm" %>
+    </ul>
+  </div>
 
-<%= render 'form' %>
 
-<%= link_to 'Show', @dog, class: "btn btn-info btn-sm" %>
-<%= link_to 'Back', dogs_path, class: "btn btn-info btn-sm" %>
+
+  <div class="col-xs-12">
+    <h1>Editing Dog</h1>
+
+    <%= render 'form' %>
+  </div>
+</div>

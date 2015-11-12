@@ -1,6 +1,18 @@
-<h1>Editing Owner</h1>
+<div class="row" id="wrapper">
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav text-center">
+      <%= link_to fa_icon('list lg', text: 'All Owners'), owners_path, class: "btn btn-info btn-sm" %>
+      <%= link_to fa_icon('eye lg', text: 'Show Owner'), @owner, class: "btn btn-info btn-sm" %>
+    </ul>
+  </div>
 
-<%= render 'form' %>
 
-<%= link_to 'Show', @owner, class: "btn btn-info btn-sm" %>
-<%= link_to 'Back', owners_path, class: "btn btn-info btn-sm" %>
+
+  <div class="col-xs-12">
+    <h1>Editing Owner</h1>
+
+    <%= render 'form' %>
+  </div>
+</div>
+
+

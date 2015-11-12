@@ -16,9 +16,8 @@
         <td><%= vet.doctor %></td>
         <td><%= vet.clinic_name %></td>
         <td><%= vet.phone %></td>
-        <td><%= link_to fa_icon('eye'), vet %></td>
-        <td><%= link_to fa_icon('pencil'), edit_vet_path(vet) %></td>
-        <td><%= link_to fa_icon('trash-o'), vet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to fa_icon('eye', text: 'Show Vet'), vet %></td>
+        <td><%= link_to fa_icon('pencil', text: 'Edit Vet'), edit_vet_path(vet) %></td>
       </tr>
     <% end %>
   </tbody>

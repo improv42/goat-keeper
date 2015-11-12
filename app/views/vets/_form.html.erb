@@ -1,29 +1,39 @@
-<%= form_for(@vet) do |f| %>
-  <% if @vet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@vet.errors.count, "error") %> prohibited this vet from being saved:</h2>
+<div class="row">
+  <%= form_for(@vet) do |f| %>
+    <% if @vet.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@vet.errors.count, "error") %> prohibited this vet from being saved:</h2>
 
-      <ul>
-      <% @vet.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @vet.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="col-sm-2">
+      <div class="actions">
+        <button type="submit" class="btn btn-success btn-sm">
+          <%= fa_icon('thumb-tack', text: 'Save Vet') %>
+          <% f.submit %>
+        </button>
+      </div>
+    </div>
+
+    <div class="col-sm-5" id="info_col">
+      <div class="field">
+        <%= f.label :doctor %><br>
+        <%= f.text_field :doctor %>
+      </div>
+      <div class="field">
+        <%= f.label :clinic_name %><br>
+        <%= f.text_field :clinic_name %>
+      </div>
+      <div class="field">
+        <%= f.label :phone %><br>
+        <%= f.text_field :phone %>
+      </div>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :doctor %><br>
-    <%= f.text_field :doctor %>
-  </div>
-  <div class="field">
-    <%= f.label :clinic_name %><br>
-    <%= f.text_field :clinic_name %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'Save Vet', class: "btn btn-success btn-sm" %>
-  </div>
-<% end %>
+</div>
