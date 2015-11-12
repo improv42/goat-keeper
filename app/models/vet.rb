@@ -4,6 +4,9 @@ class Vet < ActiveRecord::Base
   validates :doctor, :clinic_name, :phone, presence: true
   validates :doctor, :clinic_name, length: { minimum: 2 }
   validates :phone, length: { minimum: 10 }
+
+  # Normalizes the attribute itself before validation
+  phony_normalize :phone, default_country_code: 'US'
 end
 
 # == Schema Information

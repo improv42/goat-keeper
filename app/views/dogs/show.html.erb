@@ -1,23 +1,23 @@
-<p id="notice"><%= notice %></p>
+<h1>Dog Information</h1>
 
 <p>
   <strong>Name:</strong>
-  <%= @dog.name %>
+  <%= @dog.name %> <%= @dog.owner.last_name %>
 </p>
 
 <p>
   <strong>Dob:</strong>
-  <%= @dog.dob %>
+  <%= @dog.dob.stamp( 'April 29, 1976' ) %>
 </p>
 
 <p>
   <strong>Breed:</strong>
-  <%= @dog.breed %>
+  <%= @dog.breed.breed_name %>
 </p>
 
 <p>
   <strong>Owner:</strong>
-  <%= @dog.owner %>
+  <%= link_to @dog.owner.display_name, owner_path(@dog.owner_id) %>
 </p>
 
 <p>
@@ -27,8 +27,8 @@
 
 <p>
   <strong>Vet:</strong>
-  <%= @dog.vet %>
+  <%= link_to @dog.vet.doctor, vet_path(@dog.vet_id) %>
 </p>
 
-<%= link_to 'Edit', edit_dog_path(@dog) %> |
-<%= link_to 'Back', dogs_path %>
+<%= link_to 'Edit', edit_dog_path(@dog), class: "btn btn-info btn-sm" %>
+<%= link_to 'Back', dogs_path, class: "btn btn-info btn-sm" %>

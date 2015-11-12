@@ -13,3 +13,41 @@
  *= require_tree .
  *= require_self
  */
+
+.navbar {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+#brand :hover {
+  color: #339213;
+}
+
+#bs-example-navbar-collapse-1 :hover {
+  color: #339213;
+}
+
+.btn {
+  margin: 5px 5px 5px 0;
+}
+
+a {
+  color: #A2A2A2;
+}
+
+a :hover {
+  color: #339213;
+}
+
+.jumbotron {
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/50/Bodiam-castle-10My8-1197.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 15%;
+  margin-top: 15px;
+  margin-bottom: 0;
+  }
+
+  .jumbotron h1 {
+    font-variant: small-caps;
+  }
+

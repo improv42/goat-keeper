@@ -1,44 +1,55 @@
-<p id="notice"><%= notice %></p>
+<h1>Owner Information</h1>
+<hr>
+ <div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <p>
+        <strong>Name:</strong>
+        <%= @owner.display_name %>
+      </p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @owner.first_name %>
-</p>
+      <p>
+        <strong>Phone:</strong>
+        <%= @owner.phone %>
+      </p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @owner.last_name %>
-</p>
+      <p>
+        <strong>Alt phone:</strong>
+        <%= @owner.alt_phone %>
+      </p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @owner.phone %>
-</p>
+      <p>
+        <strong>Email:</strong>
+        <%= @owner.email %>
+      </p>
+    </div>
+    <div class="col-md-6">
+      <p>
+        <strong>Emergency contact name:</strong>
+        <%= @owner.emergency_contact_name %>
+      </p>
 
-<p>
-  <strong>Alt phone:</strong>
-  <%= @owner.alt_phone %>
-</p>
+      <p>
+        <strong>Emergency contact phone:</strong>
+        <%= @owner.emergency_contact_phone %>
+      </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @owner.email %>
-</p>
-
-<p>
-  <strong>Emergency contact name:</strong>
-  <%= @owner.emergency_contact_name %>
-</p>
-
-<p>
-  <strong>Emergency contact phone:</strong>
-  <%= @owner.emergency_contact_phone %>
-</p>
-
-<p>
-  <strong>Evac waiver:</strong>
-  <%= @owner.evac_waiver %>
-</p>
-
-<%= link_to 'Edit', edit_owner_path(@owner) %> |
-<%= link_to 'Back', owners_path %>
+      <p>
+        <strong>Evac waiver:</strong>
+        <%= @owner.evac_waiver %>
+      </p>
+    </div>
+  </div>
+  <hr>
+  <div class="col-md-12">
+    <h3>Dogs</h3>
+    <ul>
+      <% @owner.dogs.each do |dog| %>
+        <li><%= link_to dog.name, dog_path(dog.id) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<hr>
+<%= link_to 'Edit', edit_owner_path(@owner), class: "btn btn-info btn-sm" %>
+<%= link_to 'Back', owners_path, class: "btn btn-info btn-sm" %>

@@ -1,5 +1,4 @@
-<p id="notice"><%= notice %></p>
-
+<h1>Vet / Clinic Information</h1>
 <p>
   <strong>Doctor:</strong>
   <%= @vet.doctor %>
@@ -15,5 +14,5 @@
   <%= @vet.phone %>
 </p>
 
-<%= link_to 'Edit', edit_vet_path(@vet) %> |
-<%= link_to 'Back', vets_path %>
+<%= link_to 'Edit', edit_vet_path(@vet), class: "btn btn-info btn-sm" %>
+<%= link_to 'Back', vets_path, class: "btn btn-info btn-sm" %>
