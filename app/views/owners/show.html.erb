@@ -7,11 +7,11 @@
   </div>
 
   <div class="col-xs-12">
-    <h1><%= @owner.display_name %></h1>
+    <h1 class='text-center'><%= @owner.display_name %></h1>
     <hr>
      <div class="container-fluid">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 text-center">
           <p>
             <strong>Phone:</strong>
             <%= @owner.phone %>
@@ -27,7 +27,7 @@
             <%= @owner.email %>
           </p>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 text-center">
           <p>
             <strong>Emergency contact name:</strong>
             <%= @owner.emergency_contact_name %>
@@ -37,30 +37,30 @@
             <strong>Emergency contact phone:</strong>
             <%= @owner.emergency_contact_phone %>
           </p>
-
-          <p>
-            <strong>Evac waiver:</strong>
-            <%= @owner.evac_waiver %>
-          </p>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 text-center">
+            <button class="btn btn-sm <%= @owner.evac_waiver ? 'btn-success' : 'btn-danger' %> ">Evac. Waiver Signed</button>
+          </div>
         </div>
       </div>
-      <hr>
-      <div class="row">
-        <div class="col-md-12">
-          <h3>Dogs</h3>
-            <% @owner.dogs.each do |dog| %>
-            <div class="col-xs-6 col-sm-3">
-              <div class="panel <%= dog.in_daycare ? 'panel-success' : 'panel-default' %> ">
-                <div class="panel-heading">
-                  <h3 class="panel-title"><%= link_to dog.name, dog_path(dog.id) %></h3>
-                </div>
-                <div class="panel-body">
-                  <%= link_to image_tag(dog.avatar.url(:medium), class: 'img-responsive img-circle'), dog_path(dog.id) %>
-                </div>
+    </div>
+    <hr>
+    <div class="row row-centered">
+      <div class="col-md-12 col-centered">
+        <h3>Dogs</h3>
+          <% @owner.dogs.each do |dog| %>
+          <div class="col-xs-6 col-sm-3 col-centered">
+            <div class="panel <%= dog.in_daycare ? 'panel-success' : 'panel-default' %>">
+              <div class="panel-heading">
+                <h3 class="panel-title"><%= link_to dog.name, dog_path(dog.id) %></h3>
+              </div>
+              <div class="panel-body">
+                <%= link_to image_tag(dog.avatar.url(:medium), class: 'img-responsive img-circle'), dog_path(dog.id) %>
               </div>
             </div>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

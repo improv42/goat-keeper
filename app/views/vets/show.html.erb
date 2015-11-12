@@ -6,17 +6,17 @@
     </ul>
   </div>
 
-  <div class="col-xs-12">
+  <div class="col-xs-12 col-centered">
     <h1>Dr. <%= @vet.doctor %></h1>
     <h3><%= @vet.clinic_name %> Clinic</h3>
     <h3><small><%= fa_icon('phone lg') %> : <%= @vet.phone %></small></h5>
     <hr>
      <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
+      <div class="row row-centered">
+        <div class="col-md-12 col-centered">
           <h3>Dogs</h3>
           <% @vet.dogs.each do |dog| %>
-            <div class="col-xs-6 col-sm-3">
+            <div class="col-xs-6 col-sm-3 col-centered">
               <div class="panel <%= dog.in_daycare ? 'panel-success' : 'panel-default' %> ">
                 <div class="panel-heading">
                   <h3 class="panel-title"><%= link_to dog.name, dog_path(dog.id) %></h3>

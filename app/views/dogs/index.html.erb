@@ -2,7 +2,7 @@
 <%= link_to 'New Dog', new_dog_path, class: "btn btn-info btn-sm" %></h1>
 <hr>
 <div class="row">
-  <% @dogs.order('name').each do |dog| %>
+  <% @dogs.order('in_daycare DESC').each do |dog| %>
     <div class="col-xs-6 col-md-4">
       <div class="panel <%= dog.in_daycare ? 'panel-success' : 'panel-default' %> ">
         <div class="panel-heading">

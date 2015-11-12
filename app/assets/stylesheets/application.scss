@@ -132,6 +132,18 @@ td a:hover {
   overflow: auto;
 }
 
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:center;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+
 @media(min-width:768px) {
     #wrapper {
         padding-left: 150px;
