@@ -1,3 +1,4 @@
+# Defines the Dog class
 class Dog < ActiveRecord::Base
   belongs_to :breed
   belongs_to :owner
@@ -6,7 +7,9 @@ class Dog < ActiveRecord::Base
   validates :name, :dob, :breed_id, :owner_id, :vet_id, presence: true
   validates :name, length: { minimum: 2 }
 
-    has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :avatar, styles: {
+    medium: '300x300#',
+    thumb: '100x100#' }, default_url: ':style_missing.jpg'
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 end
 
