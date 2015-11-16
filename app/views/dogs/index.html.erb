@@ -13,14 +13,14 @@
           <p class="text-center">
             <%= link_to fa_icon('eye lg', text: 'Show Dog'), dog, class: "btn btn-info btn-sm" %>
             <%= link_to fa_icon('pencil lg', text: 'Edit Dog'), edit_dog_path(dog), class: "btn btn-info btn-sm" %>
-            <%= form_for(dog) do |f| %>
-              <div>
-                <%= f.check_box :in_daycare, class: "field checkbox-inline form-group" %>
-                <button type="submit" data-toggle="btn" class="btn btn-sm <%= dog.in_daycare ? 'btn-success' : 'btn-info' %>">
-                  <%= 'In Daycare' %>
-                  <% f.submit %>
-                </button>
-              </div>
+            <%= form_for(dog, url: dog_path(dog), html: {class: 'form-inline'}) do |f| %>
+              <% if dog.in_daycare %>
+                <%= f.hidden_field :in_daycare, value: false %>
+                <%= f.submit "Check Out", class: 'btn btn-primary btn-sm'  %>
+              <% else %>
+                <%= f.hidden_field :in_daycare, value: true %>
+                <%= f.submit "Check In", class: 'btn btn-success btn-sm' %>
+              <% end %>
             <% end %>
           </p>
         </div>
@@ -28,4 +28,3 @@
     </div>
   <% end %>
 </div>
-
