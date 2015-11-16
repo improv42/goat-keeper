@@ -41,6 +41,15 @@
         <li><%= link_to "Dogs", dogs_url %></li>
         <li><%= link_to "Vets", vets_url %></li>
       </ul>
+
+      <!-- Dog Search Box -->
+      <%= form_tag("/dogs", method: :get, role: 'search', class: 'navbar-form navbar-right' ) do %>
+        <div class="form-group">
+          <%= text_field_tag(:search, nil, placeholder: 'Fido', class: 'form-control input-sm') %>
+        </div>
+        <%= submit_tag('Search', class: 'btn btn-success btn-xs') %>
+      <% end %>
+
     </div><!-- /.navbar-collapse -->
   </nav>
 

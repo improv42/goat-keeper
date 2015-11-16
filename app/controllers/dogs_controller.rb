@@ -1,10 +1,22 @@
 class DogsController < ApplicationController
   before_action :set_dog, only: [:show, :edit, :update, :destroy]
+  # before_action :all_breeds, only: [:new, :edit]
+  # before_action :all_owners, only: [:new, :edit]
 
   # GET /dogs
   # GET /dogs.json
   def index
-    @dogs = Dog.all
+    # Shows searched for dogs only if the parameter exists
+    if params[:search]
+      @dogs = Dog.where("name LIKE ?",  "%#{params[:search]}%")
+      if @dogs.size.zero?
+        flash[:notice] = "Sorry, no result found."
+        @dogs = Dog.all
+      end
+    # Else give me all the dogs
+    else
+      @dogs = Dog.all
+    end
   end
 
   # GET /dogs/1
@@ -56,7 +68,7 @@ class DogsController < ApplicationController
   def destroy
     @dog.destroy
     respond_to do |format|
-      format.html { redirect_to dogs_url, notice: 'Dog was successfully destroyed.' }
+      format.html { redirect_to dogs_url, notice: 'Dog was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -64,6 +76,14 @@ class DogsController < ApplicationController
   private
 
     # Use callbacks to share common setup or constraints between actions.
+    # def all_breeds
+    #   @breeds = Breeds.order('breed_name')
+    # end
+
+    # def all_owners
+    #   @owners = Owners.order('last_name')
+    # end
+
     def set_dog
       @dog = Dog.find(params[:id])
     end
