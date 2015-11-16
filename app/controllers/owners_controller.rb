@@ -1,10 +1,21 @@
+# Define the Owners Controller
 class OwnersController < ApplicationController
   before_action :set_owner, only: [:show, :edit, :update, :destroy]
 
   # GET /owners
   # GET /owners.json
   def index
-    @owners = Owner.all
+    # Shows searched for dogs only if the parameter exists
+    if params[:search]
+      @owners = Owner.where("first_name LIKE ?",  "%#{params[:search]}%")
+      if @owners.size.zero?
+        flash[:notice] = "Sorry, no result found."
+        @owners = Owner.all
+      end
+    # Else give me all the dogs
+    else
+      @owners = Owner.all
+    end
   end
 
   # GET /owners/1
