@@ -6,6 +6,7 @@ class DogsController < ApplicationController
   # GET /dogs
   # GET /dogs.json
   def index
+    @breeds = Breed.all
     # Shows searched for dogs only if the parameter exists
     if params[:search]
       @dogs = Dog.where("name LIKE ?",  "%#{params[:search]}%")
@@ -13,6 +14,8 @@ class DogsController < ApplicationController
         flash[:notice] = "Sorry, no result found."
         @dogs = Dog.all
       end
+    elsif params[:breed_id]
+      @dogs = Dog.where(breed_id: params[:breed_id])
     # Else give me all the dogs
     else
       @dogs = Dog.all
@@ -54,7 +57,7 @@ class DogsController < ApplicationController
   def update
     respond_to do |format|
       if @dog.update(dog_params)
-        format.html { redirect_to @dog, notice: 'Dog was successfully updated.' }
+        format.html { redirect_to dogs_path, notice: 'Dog was successfully updated.' }
         format.json { render :show, status: :ok, location: @dog }
       else
         format.html { render :edit }

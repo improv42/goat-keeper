@@ -1,5 +1,11 @@
 <h1>All Our Dogs
 <%= link_to 'New Dog', new_dog_path, class: "btn btn-info btn-sm" %></h1>
+
+<!-- Loop to generate breed filter buttons -->
+<% @breeds.each do |breed| %>
+  <a href="?breed_id=<%= breed.id %>", class='btn btn-default btn-xs'><%= breed.breed_name %></a>
+<% end %>
+
 <hr>
 <div class="row">
   <% @dogs.order('in_daycare DESC').each do |dog| %>
