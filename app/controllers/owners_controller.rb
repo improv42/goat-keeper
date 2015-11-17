@@ -7,7 +7,7 @@ class OwnersController < ApplicationController
   def index
     # Shows searched for dogs only if the parameter exists
     if params[:search]
-      @owners = Owner.where("first_name OR last_name LIKE ?",  "%#{params[:search]}%")
+      @owners = Owner.where("first_name LIKE ? OR last_name LIKE ?",  "%#{params[:search]}%", "%#{params[:search]}%")
       if @owners.size.zero?
         flash[:notice] = "Sorry, no result found."
         @owners = Owner.all

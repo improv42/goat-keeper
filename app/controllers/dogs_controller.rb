@@ -2,6 +2,7 @@
 class DogsController < ApplicationController
   before_action :set_dog, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_admin!, except: [:index, :show]
   # before_action :all_breeds, only: [:new, :edit]
   # before_action :all_owners, only: [:new, :edit]
 

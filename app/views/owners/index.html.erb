@@ -1,5 +1,6 @@
 <div>
-  <h1>Listing Owners</h1>
+  <h1>Listing Owners
+  <%= link_to 'New Owner', new_owner_path, class: "btn btn-info btn-xs" %></h1>
   <!-- Owner Search Box -->
   <%= form_tag("/owners", method: :get, role: 'search', class: 'form-inline' ) do %>
     <div class="form-group">
@@ -35,5 +36,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Owner', new_owner_path, class: "btn btn-info btn-sm" %>
