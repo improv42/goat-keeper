@@ -1,5 +1,7 @@
+# Defines the Dogs Controller
 class DogsController < ApplicationController
   before_action :set_dog, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
   # before_action :all_breeds, only: [:new, :edit]
   # before_action :all_owners, only: [:new, :edit]
 
@@ -9,9 +11,9 @@ class DogsController < ApplicationController
     @breeds = Breed.all
     # Shows searched for dogs only if the parameter exists
     if params[:search]
-      @dogs = Dog.where("name LIKE ?",  "%#{params[:search]}%")
+      @dogs = Dog.where('name LIKE ?', "%#{params[:search]}%")
       if @dogs.size.zero?
-        flash[:notice] = "Sorry, no result found."
+        flash[:notice] = 'Sorry, no result found.'
         @dogs = Dog.all
       end
     elsif params[:breed_id]
