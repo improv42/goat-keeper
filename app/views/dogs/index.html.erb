@@ -32,13 +32,67 @@
               <%= f.submit "Check In", class: 'btn btn-success btn-sm' %>
             <% end %>
           <% end %>
+          <a href="#" data-toggle="modal" data-target="#dog-<%= dog.id %>-modal">
           <%= image_tag dog.avatar.url(:medium), class: 'img-responsive img-circle center-block' %>
           <p class="text-center">
-            <%= link_to fa_icon('eye lg', text: 'Show Dog'), dog, class: "btn btn-info btn-sm" %>
-            <%= link_to fa_icon('pencil lg', text: 'Edit Dog'), edit_dog_path(dog), class: "btn btn-info btn-sm" %>
+            <button class="btn btn-info btn-sm"><i class="fa fa-eye fa-lg"> Show Dog</i></button>
+
+            </a>
           </p>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="dog-<%= dog.id %>-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h3 class="text-center"><%= dog.name %><%= dog.owner.last_name %></h3>
+          </div>
+          <div class="modal-body">
+            <%= form_for(dog, url: dog_path(dog), html: {class: 'form-inline text-center'}) do |f| %>
+              <% if dog.in_daycare %>
+                <%= f.hidden_field :in_daycare, value: false %>
+                <%= f.submit "Check Out", class: 'btn btn-primary btn-sm'  %>
+              <% else %>
+                <%= f.hidden_field :in_daycare, value: true %>
+                <%= f.submit "Check In", class: 'btn btn-success btn-sm' %>
+              <% end %>
+            <% end %>
+            <%= image_tag dog.avatar.url(:medium), class: 'img-responsive center-block' %>
+            <br>
+              <div class="row">
+                <div class="col-sm-6 text-center">
+                  <p>
+                    <strong>Owner:</strong>
+                    <%= link_to dog.owner.display_name, owner_path(dog.owner_id) %>
+                  </p>
+                   <p>
+                    <strong>Dob:</strong>
+                    <%= dog.dob.stamp( 'April 29, 1976' ) %>
+                  </p>
+                  <p>
+                    <strong>Breed:</strong>
+                    <%= dog.breed.breed_name %>
+                  </p>
+                </div>
+                <div class="col-sm-6 text-center">
+                  <p>
+                    <strong>Vet:</strong>
+                    <%= link_to dog.vet.doctor, vet_path(dog.vet_id) %>
+                  </p>
+                  <p>
+                    <strong>Med cond:</strong>
+                    <%= dog.med_cond %>
+                  </p>
+                </div>
+              </div>
+            <p class="text-center"><%= link_to fa_icon('pencil lg', text: 'Edit Dog'), edit_dog_path(dog), class: "btn btn-info btn-sm" %></p>
+
+          </div>
         </div>
       </div>
     </div>
   <% end %>
 </div>
+
